@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Flask App </title>
+
+    <!-- Bootstraps Java Scipts Links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
+
+    <!-- JQuery links  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <!--High CHART LIVE  -->
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/highcharts-more.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+    <!--Gauge  -->
+    <script type="text/javascript" src="http://pubnub.github.io/eon/lib/eon.js"></script>
+
+
+</head>
+
+<body>
+
+
+    <div class="jumbotron">
+        <h1 class="text-center text-white">Welcome to Electromotion Dashboard </h1>
+    </div>
+    <br>
+    <br>
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-5 jumbotron p-1 mx-1">
+                <h1 class="sensor1"> Sensor : </h1>
+            </div>
+            <br>
+
+            <div class="col-5 jumbotron p-2 mx-1">
+                <h1 class="sensor2">Sensor :</h1>
+            </div>
+            <br>
+
+
+
+        </div>
+        <div class="row">
+
+            <div class="col-5 jumbotron p-2 mx-1">
+                <h1 class="sensor3"> Sensor : </h1>
+            </div>
+            <br>
+
+            <div class="col-5 jumbotron p-2 mx-1">
+                <h1 class="sensor4">Sensor :</h1>
+            </div>
+            <br>
+
+
+
+        </div>
+        <div class="row">
+
+            <div class="col-5 jumbotron p-1 mx-1">
+                <h1 class="sensor5"> Sensor : </h1>
+            </div>
+            <br>
+
+            <div class="col-5 jumbotron p-2 mx-1">
+                <h1 class="sensor6">Sensor :</h1>
+            </div>
+            <br>
+
+
+
+        </div>
+        <div class="row">
+
+            <div class="col-5 jumbotron p-2 mx-1">
+                <h1 class="sensor7"> Sensor : </h1>
+            </div>
+            <br>
+
+            <div class="col-5 jumbotron p-2 mx-1">
+                <h1 class="sensor8">Sensor :</h1>
+            </div>
+            <br>
+
+
+
+        </div>
+        <div class="row">
+
+            <div class="col-5 jumbotron p-2 mx-1">
+                <h1 class="sensor9"> Sensor : </h1>
+            </div>
+            <br>
+
+            <!-- <div class="col-5 jumbotron p-2 mx-1">
+                <h1 class="sensor9">Sensor :</h1>
+            </div>
+            <br> -->
+
+
+
+        </div>
+    </div>
+
+    <style>
+        .jumbotron {
+            widows: 150px;
+            height: 220px;
+            justify-content: center;
+        }
+
+        .row {
+            justify-content: center;
+        }
+    </style>
+
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="container-fluid" id="data-Dc_Current">
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="container-fluid">
+       
+        <div class="row">
+            <div class="container-fluid" id="data-Dc_Voltage">
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+       
+        <div class="row">
+            <div class="container-fluid" id="data-Dc_Power">
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="container-fluid" id="data-Dc_Energy">
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="container-fluid" id="data-Ac_Current">
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="container-fluid" id="data-Ac_Voltage">
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="container-fluid" id="data-Ac_Power">
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="container-fluid" id="data-Motor_Speed">
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="container-fluid" id="data-Throttle">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var chartDcCurrent;
+        var chartDcVoltage;
+        var chartDcPower;
+        var chartDcEnergy;
+        var chartAcCurrent;
+        var chartAcVoltage;
+        var chartAcPower;
+        var chartMotorSpeed;
+        var chartThrottle;
+
+        function requestData() {
+            // Ajax call to get the Data from Flask
+            var requests = $.get('/data');
+
+            var tm = requests.done(function (result) {
+  
+                var serisesDcCurrent = chartDcCurrent.series[0],
+                    shiftDcCurrent = serisesDcCurrent.data.length > 20;
+
+              
+                var seriesDcVoltage = chartDcVoltage.series[0],
+                    shiftDcVoltage = serisesDcCurrent.data.length > 20;
+
+                var seriesDcPower = chartDcPower.series[0],
+                shiftDcPower = serisesDcCurrent.data.length > 20;
+
+                var seriesDcEnergy = chartDcEnergy.series[0],
+                shiftDcEnergy = serisesDcCurrent.data.length > 20;
+
+                var seriesAcCueernt = chartAcCurrent.series[0],
+                shiftAcCurrent = serisesDcCurrent.data.length > 20;
+
+                var serisesAcVoltage = chartAcVoltage.series[0],
+                shiftAcVoltage = serisesDcCurrent.data.length > 20;
+
+               
+                var seriesAcPower = chartAcPower.series[0],
+                shiftAcPower = serisesDcCurrent.data.length > 20;
+
+            
+                
+                var seriesMotorSpeed = chartMotorSpeed.series[0],
+                shiftMotorSpeed = serisesDcCurrent.data.length > 20;
+                
+                var seriesThrottle = chartThrottle.series[0],
+                shifThrottle = serisesDcCurrent.data.length > 20;
+                
+
+                // Add the Point
+                // Time Temperature\
+                var data1 = [];
+                data1.push(result[0]);
+                data1.push(result[1]);
+
+
+                // Add the Point
+                // Time DcVoltage
+                var data2 = [];
+                data2.push(result[0]);
+                data2.push(result[2]);
+
+                var data3 = [];
+                data3.push(result[0]);
+                data3.push(result[3]);
+
+                var data4 = [];
+                data4.push(result[0]);
+                data4.push(result[4]);
+
+                var data5 = [];
+                data5.push(result[0]);
+                data5.push(result[5]);
+
+                var data6 = [];
+                data6.push(result[0]);
+                data6.push(result[6]);
+
+                var data7 = [];
+                data7.push(result[0]);
+                data7.push(result[7]);
+
+                var data8 = [];
+                data8.push(result[0]);
+                data8.push(result[8]);
+
+                var data9 = [];
+                data9.push(result[0]);
+                data9.push(result[9]);
+
+
+
+
+
+
+                chartDcCurrent.series[0].addPoint(data1, true, shiftDcCurrent);
+                chartDcVoltage.series[0].addPoint(data2, true, shiftDcVoltage);
+                chartDcPower.series[0].addPoint(data3, true, shiftDcPower);
+                chartDcEnergy.series[0].addPoint(data4, true, shiftDcEnergy);
+                chartAcCurrent.series[0].addPoint(data5, true, shiftAcCurrent);
+                chartAcVoltage.series[0].addPoint(data6, true, shiftAcVoltage);
+                chartAcPower.series[0].addPoint(data7, true, shiftAcPower);
+                chartMotorSpeed.series[0].addPoint(data8, true, shiftMotorSpeed);
+                chartThrottle.series[0].addPoint(data9, true, shifThrottle);
+                $(".sensor1").text("");
+                $(".sensor1").text("DcCurrent : " + Math.round(data1[1]));
+
+                $(".sensor2").text("");
+                $(".sensor2").text("DcVoltage : " + Math.round(data2[1]));
+
+                $(".sensor3").text("");
+                $(".sensor3").text("DcPower: " + Math.round(data3[1]));
+
+                $(".sensor4").text("");
+                $(".sensor4").text("DcEnergy : " + Math.round(data4[1]));
+
+                $(".sensor5").text("");
+                $(".sensor5").text("AcCurrent : " + Math.round(data5[1]));
+
+                $(".sensor6").text("");
+                $(".sensor6").text("AcVoltage : " + Math.round(data6[1]));
+
+                $(".sensor7").text("");
+                $(".sensor7").text("AcPower: " + Math.round(data7[1]));
+
+                $(".sensor8").text("");
+                $(".sensor8").text("Motor Speed : " + Math.round(data8[1]));
+
+                $(".sensor9").text("");
+                $(".sensor9").text("Throttle : " + Math.round(data9[1]));
+
+
+                // call it again after one second
+                setTimeout(requestData, 2000);
+
+            });
+        }
+
+        $(document).ready(function () {
+            // --------------Chart 1 ----------------------------
+            chartDcCurrent = new Highcharts.Chart({
+                chart:
+                {
+                    renderTo: 'data-Dc_Current',
+                    defaultSeriesType: 'area',
+                    events: {
+                        load: requestData
+                    }
+                },
+                title:
+                {
+                    text: 'DcCurrent'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150,
+                    maxZoom: 20 * 1000
+                },
+                yAxis: {
+                    minPadding: 0.2,
+                    maxPadding: 0.2,
+                    title: {
+                        text: 'Value',
+                        margin: 80
+                    }
+                },
+                series: [{
+                    color: '#6ab6b9',
+                    lineColor: '#303030',
+                    name: 'DcCurrent',
+                    data: []
+                }]
+            });
+            // --------------Chart 1 Ends - -----------------
+
+            chartDcVoltage = new Highcharts.Chart({
+                chart:
+                {
+                    renderTo: 'data-Dc_Voltage',
+                    defaultSeriesType: 'area',
+                    events: {
+                        load: requestData
+                    }
+                },
+                title:
+                {
+                    text: 'DcVoltage'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150,
+                    maxZoom: 20 * 1000
+                },
+                yAxis: {
+                    minPadding: 0.2,
+                    maxPadding: 0.2,
+                    title: {
+                        text: 'Value',
+                        margin: 80
+                    }
+                },
+                series: [{
+                    color: '#6ab6b9',
+                    lineColor: '#303030',
+                    name: 'DcVoltage',
+                    data: []
+                }]
+            });
+
+            //-----------------------------chart 2 ends-----------------------------------
+            chartDcPower = new Highcharts.Chart({
+                chart:
+                {
+                    renderTo: 'data-Dc_Power',
+                    defaultSeriesType: 'area',
+                    events: {
+                        load: requestData
+                    }
+                },
+                title:
+                {
+                    text: 'DcPower'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150,
+                    maxZoom: 20 * 1000
+                },
+                yAxis: {
+                    minPadding: 0.2,
+                    maxPadding: 0.2,
+                    title: {
+                        text: 'Value',
+                        margin: 80
+                    }
+                },
+                series: [{
+                    color: '#6ab6b9',
+                    lineColor: '#303030',
+                    name: 'DcPower',
+                    data: []
+                }]
+            });
+
+            //-----------------------------chart 4 ends-----------------------------------
+            chartDcEnergy = new Highcharts.Chart({
+                chart:
+                {
+                    renderTo: 'data-Dc_Energy',
+                    defaultSeriesType: 'area',
+                    events: {
+                        load: requestData
+                    }
+                },
+                title:
+                {
+                    text: 'DcEnergy'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150,
+                    maxZoom: 20 * 1000
+                },
+                yAxis: {
+                    minPadding: 0.2,
+                    maxPadding: 0.2,
+                    title: {
+                        text: 'Value',
+                        margin: 80
+                    }
+                },
+                series: [{
+                    color: '#6ab6b9',
+                    lineColor: '#303030',
+                    name: 'DcEnergy',
+                    data: []
+                }]
+            });
+             //-----------------------------chart 5 ends-----------------------------------
+             chartAcCurrent = new Highcharts.Chart({
+                chart:
+                {
+                    renderTo: 'data-Ac_Current',
+                    defaultSeriesType: 'area',
+                    events: {
+                        load: requestData
+                    }
+                },
+                title:
+                {
+                    text: 'AcCurrent'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150,
+                    maxZoom: 20 * 1000
+                },
+                yAxis: {
+                    minPadding: 0.2,
+                    maxPadding: 0.2,
+                    title: {
+                        text: 'Value',
+                        margin: 80
+                    }
+                },
+                series: [{
+                    color: '#6ab6b9',
+                    lineColor: '#303030',
+                    name: 'AcCurrent',
+                    data: []
+                }]
+            });
+             //-----------------------------chart 6 ends-----------------------------------
+             chartAcVoltage = new Highcharts.Chart({
+                chart:
+                {
+                    renderTo: 'data-Ac_Voltage',
+                    defaultSeriesType: 'area',
+                    events: {
+                        load: requestData
+                    }
+                },
+                title:
+                {
+                    text: 'AcVoltage'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150,
+                    maxZoom: 20 * 1000
+                },
+                yAxis: {
+                    minPadding: 0.2,
+                    maxPadding: 0.2,
+                    title: {
+                        text: 'Value',
+                        margin: 80
+                    }
+                },
+                series: [{
+                    color: '#6ab6b9',
+                    lineColor: '#303030',
+                    name: 'AcVoltage',
+                    data: []
+                }]
+            });
+
+             //-----------------------------chart 7 ends-----------------------------------
+             chartAcPower = new Highcharts.Chart({
+                chart:
+                {
+                    renderTo: 'data-Ac_Power',
+                    defaultSeriesType: 'area',
+                    events: {
+                        load: requestData
+                    }
+                },
+                title:
+                {
+                    text: 'AcPower'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150,
+                    maxZoom: 20 * 1000
+                },
+                yAxis: {
+                    minPadding: 0.2,
+                    maxPadding: 0.2,
+                    title: {
+                        text: 'Value',
+                        margin: 80
+                    }
+                },
+                series: [{
+                    color: '#6ab6b9',
+                    lineColor: '#303030',
+                    name: 'AcPower',
+                    data: []
+                }]
+            });
+
+            //-----------------------------chart 8 ends-----------------------------------
+
+            chartMotorSpeed = new Highcharts.Chart({
+                chart:
+                {
+                    renderTo: 'data-Motor_Speed',
+                    defaultSeriesType: 'area',
+                    events: {
+                        load: requestData
+                    }
+                },
+                title:
+                {
+                    text: 'MotorSpeed'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150,
+                    maxZoom: 20 * 1000
+                },
+                yAxis: {
+                    minPadding: 0.2,
+                    maxPadding: 0.2,
+                    title: {
+                        text: 'Value',
+                        margin: 80
+                    }
+                },
+                series: [{
+                    color: '#6ab6b9',
+                    lineColor: '#303030',
+                    name: 'MotorSpeed',
+                    data: []
+                }]
+            });
+
+            chartThrottle = new Highcharts.Chart({
+                chart:
+                {
+                    renderTo: 'data-Throttle',
+                    defaultSeriesType: 'area',
+                    events: {
+                        load: requestData
+                    }
+                },
+                title:
+                {
+                    text: 'Throttle'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 150,
+                    maxZoom: 20 * 1000
+                },
+                yAxis: {
+                    minPadding: 0.2,
+                    maxPadding: 0.2,
+                    title: {
+                        text: 'Value',
+                        margin: 80
+                    }
+                },
+                series: [{
+                    color: '#6ab6b9',
+                    lineColor: '#303030',
+                    name: 'Throttle',
+                    data: []
+                }]
+            });
+
+
+            
+            
+
+
+   
+
+        });
+
+    </script>
+
+
+
+
+    <script>
+        class Image {
+
+            constructor(imgUrl, size) {
+                this.imgUrl = imgUrl;
+                this.size = size;
+            }
+
+            backgroundImage() {
+                console.log("inside function ")
+                // Select the Image
+                var img = document.querySelector(".jumbotron");
+
+                // create Css Text
+                var text = "margin:auto;" +
+                    "background-image: url(" + this.imgUrl + ");" +
+                    "background-size:cover;" +
+                    "opacity:1;" +
+                    "background-blend-mode: darken;" +
+                    "height: " + this.size + "vh;";
+
+                img.style.cssText = text;
+            }
+
+            centerTitle() {
+                /*
+                    Center the Title
+                 */
+                var t1 = document.querySelector("#title");
+                t1.classList.add("text-white");
+                t1.classList.add("text-center");
+                t1.classList.add("display-3");
+            }
+        }
+        const imgUrl = 'https://static.vecteezy.com/system/resources/previews/000/179/685/original/free-electric-car-charging-vector-illustration.jpg'
+        const size = "34";
+        var obj = new Image(imgUrl, size);
+        obj.backgroundImage();
+        obj.centerTitle();
+    </script>
+</body>
+
+
+</html>
