@@ -3,7 +3,7 @@ import time
 from flask import Flask, render_template, make_response
 from urllib.request import urlopen
 
-application = Flask(__name__)
+app = Flask(__name__)
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -47,4 +47,4 @@ def data():
 
 
 if __name__ == "__main__":
-    application.run(debug=True)
+    app.run(debug=True)
