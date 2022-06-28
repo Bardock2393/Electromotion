@@ -3,15 +3,15 @@ import time
 from flask import Flask, render_template, make_response
 from urllib.request import urlopen
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.route('/', methods=["GET", "POST"])
+@application.route('/', methods=["GET", "POST"])
 def main():
     return render_template('index.html')
 
 
-@app.route('/data', methods=["GET", "POST"])
+@application.route('/data', methods=["GET", "POST"])
 def data():
     url = "https://sbucket2393.s3.amazonaws.com/mykey"
     response = urlopen(url)
@@ -47,4 +47,4 @@ def data():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    application.run(debug=True)
